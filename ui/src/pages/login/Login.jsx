@@ -23,8 +23,8 @@ function Login() {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <Link to="/Profile" class="sign-in-button">Sign In</Link> {/* //! changer lien? */}
-          {/* <button class="sign-in-button">Sign In</button>  */} {/* //! A changer en bouton? */}
+          <Link to="/Profile" className="sign-in-button">Sign In</Link> {/* //! changer lien? */}
+          {/* <button className="sign-in-button">Sign In</button>  */} {/* //! A changer en bouton? */}
         </form>
       </section>
     </main>

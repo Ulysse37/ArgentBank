@@ -1,10 +1,8 @@
-/* import { Link, useLocation } from 'react-router-dom'; */
 import logo from '../../assets/argentBankLogo.png';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-
 
 function NavBar() {
 

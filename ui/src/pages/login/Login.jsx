@@ -1,7 +1,7 @@
 import './login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -23,7 +23,7 @@ function Login() {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <a href="./user.html" class="sign-in-button">Sign In</a>
+          <Link to="/Profile" class="sign-in-button">Sign In</Link> {/* //! changer lien? */}
           {/* <button class="sign-in-button">Sign In</button>  */} {/* //! A changer en bouton? */}
         </form>
       </section>

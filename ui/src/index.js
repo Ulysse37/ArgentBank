@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/navbar/NavBar.jsx';
 import Home from './pages/home/Home.jsx';
+import Login from './pages/login/Login.jsx';
 import Footer from './components/footer/Footer.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,7 @@ root.render(
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <Route path="/login" element={<Login />}></Route> */}
+        <Route path="/login" element={<Login />}></Route>
         {/* <Route path="/profile/:id" element={<Profile />}></Route> */}
       </Routes>
       <Footer />

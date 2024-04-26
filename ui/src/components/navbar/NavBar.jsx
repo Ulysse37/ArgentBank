@@ -3,6 +3,7 @@ import logo from '../../assets/argentBankLogo.png';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 function NavBar() {
@@ -17,10 +18,10 @@ function NavBar() {
           </a>
       </li>
       <li>
-          <a className="main-nav-item" href="./sign-in.html">
+          <Link to="/Login" className="main-nav-item">
           <FontAwesomeIcon className="singup-icon" icon={faCircleUser}/>
             Sign In
-          </a>
+          </Link>
       </li>
       </ul>
     </nav>

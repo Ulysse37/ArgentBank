@@ -4,7 +4,7 @@ function Home() {
 
   return (
     <main>
-      <h2>Asd</h2>
+      <h2>cc</h2>
     </main>
   );
 }

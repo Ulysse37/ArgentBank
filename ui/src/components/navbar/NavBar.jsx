@@ -19,7 +19,7 @@ function NavBar() {
       </li>
       <li>
           <Link to="/Login" className="main-nav-item">
-          <FontAwesomeIcon className="singup-icon" icon={faCircleUser}/>
+          <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
             Sign In
           </Link>
       </li>

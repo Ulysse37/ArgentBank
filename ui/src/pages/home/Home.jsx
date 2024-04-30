@@ -1,7 +1,11 @@
 import './home.css';
+
 import ChatIcon from '../../assets/icon-chat.png';
 import MoneyIcon from '../../assets/icon-money.png';
 import SecurityIcon from '../../assets/icon-security.png';
+
+/* import Feature from '../../components/feature/Feature.Jsx'; */
+
 
 function Home() {
 
@@ -18,6 +22,7 @@ function Home() {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
+        {/* <Feature /> */}  {/* //! String contains an invalid character  */}
         <div className="feature-item">
           <img src={ChatIcon} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">You are our #1 priority</h3>

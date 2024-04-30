@@ -1,6 +1,5 @@
 import './profile.css';
 import Account from '../../components/account/Account'
-
 function Profile() {
 
   return (

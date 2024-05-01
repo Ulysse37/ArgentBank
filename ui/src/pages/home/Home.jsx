@@ -1,10 +1,11 @@
 import './home.css';
 
-import ChatIcon from '../../assets/icon-chat.png';
+/* import ChatIcon from '../../assets/icon-chat.png';
 import MoneyIcon from '../../assets/icon-money.png';
-import SecurityIcon from '../../assets/icon-security.png';
+import SecurityIcon from '../../assets/icon-security.png'; */
 
 import Feature from '../../components/feature/Feature';
+import { featuresData } from '../../assets/featureData';
 
 function Home() {
 
@@ -21,18 +22,15 @@ function Home() {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
-        <Feature 
-          imgSrc={ChatIcon} imgAlt="Icône de communication" 
-          title="You are our #1 priority" 
-          text="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes." />  
-        <Feature 
-          imgSrc={MoneyIcon} imgAlt="Icône d'argent'" 
-          title="More savings means higher rates" 
-          text="The more you save with us, the higher your interest rate will be!" />  
-        <Feature 
-          imgSrc={SecurityIcon} imgAlt="Icône de sécurité'" 
-          title="Security you can trust" 
-          text="We use top of the line encryption to make sure your data and money is always safe." /> 
+        {featuresData.map((feature, index) => (
+          <Feature
+            key={index}
+            imgSrc={feature.imgSrc}
+            imgAlt={feature.imgAlt}
+            title={feature.title}
+            text={feature.text}
+          />
+        ))}
       </section>
     </main>
   );

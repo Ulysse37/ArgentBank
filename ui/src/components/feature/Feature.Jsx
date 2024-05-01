@@ -1,9 +1,13 @@
 import './feature.css'
 
-function Feature() {
+function Feature({ imgSrc, imgAlt, title, text }) {
 
   return (
-    <div>test</div>
+    <div className="feature-item">
+      <img src={imgSrc} alt={imgAlt} className="feature-icon" />
+      <h3 className="feature-item-title">{title}</h3>
+      <p>{text}</p>
+    </div>
   );
 }
 

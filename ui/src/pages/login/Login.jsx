@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Login() {
 
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark main-login">
       <section className="sign-in-content">
         <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
         <h1>Sign In</h1>

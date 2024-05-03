@@ -2,6 +2,10 @@
   flex: 1;
 }
 
+.main-profile {
+  min-height: 640px;
+}
+
 .bg-dark {
   background-color: #12002b;
 }
@@ -25,10 +29,15 @@
   margin-bottom: 2rem;
 }
 
+.profile-title {
+  margin : 0;
+}
+
 .edit-button {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
   font-weight: bold;
+  margin-top: 1rem;
   padding: 10px;
 }

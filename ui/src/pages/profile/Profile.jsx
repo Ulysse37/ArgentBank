@@ -3,9 +3,9 @@ import Account from '../../components/account/Account'
 function Profile() {
 
   return (
-    <main className="main bg-dark">
+    <main className="main bg-dark main-profile">
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1 className='profile-title'>Welcome back<br />Tony Jarvis!</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

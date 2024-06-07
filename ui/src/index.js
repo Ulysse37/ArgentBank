@@ -10,10 +10,11 @@ import Login from './pages/login/Login.jsx';
 import Profile from './pages/profile/Profile.jsx';
 import Footer from './components/footer/Footer.jsx';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
       <Router>
         <NavBar />
         <Routes>
@@ -23,6 +24,6 @@ root.render(
         </Routes>
         <Footer />
       </Router>
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>
 );

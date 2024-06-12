@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   token: null,
-  isLoading: false,
+  /* isLoading: false, */
   error: null,
   isAuthenticated: false,
 };
@@ -13,14 +13,14 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.payload,
-        isLoading: false,
+        /* isLoading: false, */
         error: null,
         isAuthenticated: true,
       };
     case 'LOGIN_FAILURE':
       return {
         ...state,
-        isLoading: false,
+        /* isLoading: false, */
         error: 'Login failed',
         isAuthenticated: false,
       };

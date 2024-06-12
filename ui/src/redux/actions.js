@@ -12,6 +12,7 @@ export const login = (email, password) => {
       if (response.ok) {
         console.log('Response is OK:', response);
         const data = await response.json();
+        localStorage.setItem('token', data.token);
         dispatch({ type: 'LOGIN_SUCCESS', payload: data.token });
 
       } else {

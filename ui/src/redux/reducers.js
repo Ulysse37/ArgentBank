@@ -4,6 +4,7 @@ const initialState = {
   token: null,
   isLoading: false,
   error: null,
+  isAuthenticated: false,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -14,12 +15,14 @@ const loginReducer = (state = initialState, action) => {
         token: action.payload,
         isLoading: false,
         error: null,
+        isAuthenticated: true,
       };
     case 'LOGIN_FAILURE':
       return {
         ...state,
         isLoading: false,
         error: 'Login failed',
+        isAuthenticated: false,
       };
     default:
       return state;

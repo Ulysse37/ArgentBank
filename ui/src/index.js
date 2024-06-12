@@ -8,6 +8,7 @@ import NavBar from './components/navbar/NavBar.jsx';
 import Home from './pages/home/Home.jsx';
 import Login from './pages/login/Login.jsx';
 import Profile from './pages/profile/Profile.jsx';
+import ProfileAuth from './pages/profileAuth/ProfileAuth.js';
 import Footer from './components/footer/Footer.jsx';
 
 
@@ -19,8 +20,16 @@ root.render(
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/login" element={
+            <ProfileAuth isProtected={false}>
+              <Login />
+            </ProfileAuth>}>
+          </Route>
+          <Route path="/profile" element={
+            <ProfileAuth isProtected={true}>
+              <Profile />
+            </ProfileAuth>}>
+          </Route>
         </Routes>
         <Footer />
       </Router>

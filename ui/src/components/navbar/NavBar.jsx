@@ -3,8 +3,10 @@ import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function NavBar() {
+  const location = useLocation();
 
   return (
     <nav className="main-nav">
@@ -18,7 +20,7 @@ function NavBar() {
       <li>
           <Link to="/Login" className="main-nav-item">
           <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
-            Sign In
+            Sign {location.pathname === '/profile' ? 'Out' : 'In'}
           </Link>
       </li>
       </ul>

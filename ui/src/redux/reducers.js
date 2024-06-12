@@ -7,7 +7,7 @@ const initialState = {
   isAuthenticated: false,
 };
 
-const loginReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
       return {
@@ -38,7 +38,7 @@ const loginReducer = (state = initialState, action) => {
 };
 
 const rootReducer = combineReducers({
-  login: loginReducer,
+  login: reducer,
 });
 
 export default rootReducer;

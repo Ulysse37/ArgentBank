@@ -10,7 +10,7 @@ import { logOut } from '../../redux/actions';
 function NavBar() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const handleLogOut = () => {
+  const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     dispatch(logOut());
   };
 
@@ -23,12 +23,13 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
       </li>
+      {/* <li></li>  ajouter le username sur lequel on est co ICI*/}
       <li>
           <Link to="/Login" 
           className="main-nav-item"
           onClick={location.pathname === '/profile' ? handleLogOut : null}>
-          <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
-            Sign {location.pathname === '/profile' ? 'Out' : 'In'}
+            <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
+              Sign {location.pathname === '/profile' ? 'Out' : 'In'}
           </Link>
       </li>
       </ul>

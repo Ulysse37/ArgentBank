@@ -29,7 +29,12 @@ export const login = (email, password) => {
 
 export const logOut = () => {
   return (dispatch) =>  {
+    try {
     localStorage.removeItem('token');
+    console.log('Log out action');
     dispatch({ type: 'LOGOUT' });
+    } catch (error) {
+      console.log('Error lors du logOut', error);
+    }
   };
 };

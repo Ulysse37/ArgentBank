@@ -24,6 +24,14 @@ const loginReducer = (state = initialState, action) => {
         error: 'Login failed',
         isAuthenticated: false,
       };
+    case 'LOUGOUT':
+      return {
+        ...state,
+        token: null,
+        /* isLoading: false, */
+        error: null,
+        isAuthenticated: false,
+      }
     default:
       return state;
   }

@@ -26,3 +26,10 @@ export const login = (email, password) => {
     }
   };
 };
+
+export const logOut = () => {
+  return (dispatch) =>  {
+    localStorage.removeItem('token');
+    dispatch({ type: 'LOGOUT' });
+  };
+};

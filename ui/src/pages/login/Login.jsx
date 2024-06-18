@@ -1,10 +1,10 @@
 import './login.css';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch/* , useSelector */ } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
-import { login } from '../../redux/actions';
+import { logIn } from '../../redux/actions';
 /* import { Link } from 'react-router-dom'; */
 
 
@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    dispatch(login(email, password));
+    dispatch(logIn(email, password));
     navigate('/profile');
   };
 

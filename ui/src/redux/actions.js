@@ -1,4 +1,4 @@
-export const login = (email, password) => {
+export const logIn = (email, password) => {
   return async (dispatch) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {

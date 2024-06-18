@@ -1,11 +1,20 @@
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './profile.css';
 import Account from '../../components/account/Account'
+import { getProfileInfo } from '../../redux/actions'
 function Profile() {
+  const { firstName, lastName } = useSelector(state => state.login.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfileInfo());
+  }, [dispatch]);
 
   return (
     <main className="main bg-dark main-profile">
       <div className="header">
-        <h1 className='profile-title'>Welcome back<br />Tony Jarvis!</h1>
+        <h1 className='profile-title'>Welcome back<br />{firstName} {lastName}!</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

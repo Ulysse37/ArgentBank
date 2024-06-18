@@ -43,3 +43,31 @@ export const logOut = () => {
   };
 };
 
+export const getProfileInfo = () => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Response is OK:', response);
+        dispatch({ type: 'GET_PROFILE_INFO', payload: data.body });
+
+      } else {
+        console.log('Response is not OK:', response);
+        dispatch({ type: 'GET_PROFILE_FAILURE' });
+      }
+    }
+    catch (error) {
+      console.log('Error:', error);
+      dispatch({ type: 'GET_PROFILE_FAILURE' });
+    }
+  };
+};

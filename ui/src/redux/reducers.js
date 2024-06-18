@@ -2,9 +2,12 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   token: null,
-  /* isLoading: false, */
   error: null,
   isAuthenticated: false,
+  user: {
+    firstName: "",
+    lastName: "",
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,25 +15,33 @@ const reducer = (state = initialState, action) => {
     case 'LOGIN_SUCCESS':
       return {
         ...state,
-        token: action.payload,
-        /* isLoading: false, */
+        token: action.payload,   
         error: null,
         isAuthenticated: true,
       };
     case 'LOGIN_FAILURE':
       return {
-        ...state,
-        /* isLoading: false, */
+        ...state,   
         error: 'Login failed',
         isAuthenticated: false,
       };
     case 'LOGOUT':
       return {
         ...state,
-        token: null,
-        /* isLoading: false, */
+        token: null,   
         error: null,
         isAuthenticated: false,
+      }
+    case 'GET_PROFILE_INFO':
+      return {
+        ...state,
+        error: null,
+        user: action.payload,
+      }
+    case 'GET_PROFILE_FAILURE': 
+      return {
+        ...state,
+        error: 'Get profile failed',
       }
     default:
       return state;

@@ -9,11 +9,14 @@ export const logIn = (email, password) => {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+      const token = data.body.token;
+
       if (response.ok) {
         console.log('Response is OK:', response);
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        dispatch({ type: 'LOGIN_SUCCESS', payload: data.token });
+        localStorage.setItem('token', token); // Ajout d'un localStorage pour gérer le login
+        sessionStorage.setItem('token', data.token); // Ajout d'un sessionStorage pour gérer persistance du login
+        dispatch({ type: 'LOGIN_SUCCESS', payload: token });
 
       } else {
         console.log('Response is not OK:', response);
@@ -30,7 +33,8 @@ export const logIn = (email, password) => {
 export const logOut = () => {
   return (dispatch) =>  {
     try {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token'); // suppression des tokens pour la déconnexion
+    sessionStorage.removeItem('token');
     console.log('Log out action');
     dispatch({ type: 'LOGOUT' });
     } catch (error) {
@@ -38,3 +42,4 @@ export const logOut = () => {
     }
   };
 };
+

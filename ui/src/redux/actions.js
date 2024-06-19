@@ -57,11 +57,12 @@ export const getProfileInfo = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Response is OK:', response);
+        console.log('Get profile response is OK:', response);
+        console.log("data body",data.body);
         dispatch({ type: 'GET_PROFILE_INFO', payload: data.body });
 
       } else {
-        console.log('Response is not OK:', response);
+        console.log('Get profile response is not OK:', response);
         dispatch({ type: 'GET_PROFILE_FAILURE' });
       }
     }

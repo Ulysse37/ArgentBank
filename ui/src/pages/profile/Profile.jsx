@@ -5,12 +5,12 @@ import Account from '../../components/account/Account'
 import { getProfileInfo } from '../../redux/actions'
 function Profile() {
   const { firstName, lastName } = useSelector(state => state.login.user);
+  const [displayName, setDisplayName] = useState(`${firstName} ${lastName}`);
   const dispatch = useDispatch();
 
-  const [displayName, setDisplayName] = useState(`${firstName} ${lastName}`);
-
-  useEffect(() => { // affiche le nom de l'utilisateur
-    dispatch(getProfileInfo());
+  useEffect(() => { 
+  
+    dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
   }, [dispatch]);
 
   const handleEditName = () => {

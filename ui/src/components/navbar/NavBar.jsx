@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../assets/argentBankLogo.png';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { logOut } from '../../redux/actions';
@@ -33,12 +33,15 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
       </li>
-      <li>{firstName} {lastName}</li>  {/* A FAIRE : Changer la position / style  */}
+      <li>
+        <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
+        {firstName}
+      </li>
       <li>
           <Link to="/Login" 
           className="main-nav-item"
           onClick={location.pathname === '/profile' ? handleLogOut : null}>
-            <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
+            <FontAwesomeIcon className="signup-icon" icon={faArrowRightFromBracket} />
               Sign {location.pathname === '/profile' ? 'Out' : 'In'}
           </Link>
       </li>

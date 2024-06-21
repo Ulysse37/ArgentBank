@@ -11,6 +11,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log('Action :', action);
   switch (action.type) {
     case 'LOGIN_SUCCESS':
       return {

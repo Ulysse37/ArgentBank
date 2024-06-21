@@ -13,18 +13,18 @@ export const logIn = (email, password) => {
       const token = data.body.token;
 
       if (response.ok) {
-        console.log('Response is OK:', response);
+        /* console.log('Response is OK:', response); */
         localStorage.setItem('token', token); // Ajout d'un localStorage pour gérer le login
         sessionStorage.setItem('token', data.token); // Ajout d'un sessionStorage pour gérer persistance du login
         dispatch({ type: 'LOGIN_SUCCESS', payload: token });
 
       } else {
-        console.log('Response is not OK:', response);
+        /* console.log('Response is not OK:', response); */
         dispatch({ type: 'LOGIN_FAILURE' });
       }
 
     } catch (error) {
-      console.log('Error:', error);
+      /* console.log('Error:', error); */
       dispatch({ type: 'LOGIN_FAILURE' });
     }
   };
@@ -35,7 +35,7 @@ export const logOut = () => {
     try {
     localStorage.removeItem('token'); // suppression des tokens pour la déconnexion
     sessionStorage.removeItem('token');
-    console.log('Log out action');
+    /* console.log('Log out action'); */
     dispatch({ type: 'LOGOUT' });
     } catch (error) {
       console.log('Error lors du logOut', error);

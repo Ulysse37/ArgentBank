@@ -10,7 +10,7 @@ import { logOut } from '../../redux/actions';
 import { getProfileInfo } from '../../redux/actions'
 
 function NavBar() {
-  const { firstName, lastName } = useSelector(state => state.login.user);
+  const { firstName } = useSelector(state => state.login.user);
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
       </li>
-      <li>
+      <li className='nav-firstname'>
         <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
         {firstName}
       </li>

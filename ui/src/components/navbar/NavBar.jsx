@@ -33,10 +33,12 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
       </li>
-      <li className='nav-firstname'>
-        <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
-        {firstName}
-      </li>
+      {firstName && (
+        <li className='nav-firstname'>
+          <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
+          {firstName}
+        </li>
+      )}
       <li>
           <Link to="/Login" 
           className="main-nav-item"

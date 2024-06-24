@@ -11,6 +11,7 @@ import { getProfileInfo } from '../../redux/actions'
 
 function NavBar() {
   const { firstName } = useSelector(state => state.login.user);
+  /* const { firstName } = useSelector(state => state.auth.user); */
 
   const location = useLocation();
   const dispatch = useDispatch();

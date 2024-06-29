@@ -20,7 +20,7 @@ function NavBar() {
     if (firstName) {
       dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
     }
-    }, [dispatch]);
+    }, [firstName, dispatch]);
 
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     dispatch(logOut());

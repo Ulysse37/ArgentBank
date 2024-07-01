@@ -10,17 +10,17 @@ import { logOut } from '../../redux/actions';
 import { getProfileInfo } from '../../redux/actions'
 
 function NavBar() {
-  const { firstName } = useSelector(state => state.login.user);
+  
   /* const { firstName } = useSelector(state => state.auth.user); */
 
   const location = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => { 
+  /* useEffect(() => { 
     if (firstName) {
       dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
     }
-    }, [firstName, dispatch]);
+    }, [firstName, dispatch]); */
 
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     dispatch(logOut());
@@ -35,12 +35,12 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
       </li>
-      {firstName && (
+      {/* {firstName && (
         <li className='nav-firstname'>
           <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
           {firstName}
         </li>
-      )}
+      )} */}
       <li>
           <Link to="/Login" 
           className="main-nav-item"

@@ -7,8 +7,6 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { logIn } from '../../redux/actions';
 /* import { Link } from 'react-router-dom'; */
 
-
-/* function Login() { */
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,13 +15,23 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  const handleSubmit = (e) => {
+  /* const handleSubmit = (e) => {
     e.preventDefault();
     
     dispatch(logIn(email, password));
     navigate('/profile');
-  };
+  }; */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+      dispatch(logIn({ email, password }));
+
+      navigate('/profile');
+    } catch (error){
+      console.log('error');
+    }
+  };
   return (
     <main className="main bg-dark main-login">
       <section className="sign-in-content">

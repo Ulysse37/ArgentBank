@@ -4,21 +4,20 @@ import './profile.css';
 import Account from '../../components/account/Account'
 import { getProfileInfo } from '../../redux/actions'
 function Profile() {
-  const { firstName, lastName } = useSelector(state => state.login.user);
+  
   /* const { firstName, lastName } = useSelector(state => state.auth.user); */
   
-  /* const [displayName, setDisplayName] = useState(`${firstName} ${lastName}`); */
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch();
 
   useEffect(() => { 
   
     dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
-  }, [dispatch]);
+  }, [dispatch]); */
 
   return (
     <main className="main bg-dark main-profile">
       <div className="header">
-        <h1 className='profile-title'>Welcome back<br />{firstName} {lastName} !</h1>
+        <h1 className='profile-title'>Welcome back<br />{/* {firstName} {lastName} */} !</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

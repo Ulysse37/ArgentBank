@@ -70,7 +70,7 @@ export const getProfileInfo = createAsyncThunk(
       if (!data || !data.body) {
         throw new Error('Invalid profile data');
       }
-
+      /* console.log(data.body); */
       return data.body;
       /* if (response.ok) {
 

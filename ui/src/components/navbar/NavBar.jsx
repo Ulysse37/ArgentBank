@@ -26,7 +26,7 @@ function NavBar() {
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     dispatch(logOut());
   };
-
+  console.log(user);
   return (
     <nav className="main-nav">
       <ul>

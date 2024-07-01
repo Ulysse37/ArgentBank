@@ -11,9 +11,10 @@ function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => { 
-  
-    dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
-  }, [dispatch]);
+    if (user) {
+      dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
+    }
+    }, [user, dispatch]);
 
   return (
     <main className="main bg-dark main-profile">

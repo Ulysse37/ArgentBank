@@ -49,7 +49,7 @@ export const logOut = createAsyncThunk(
   }
 );
 
-/* export const getProfileInfo = createAsyncThunk(
+export const getProfileInfo = createAsyncThunk(
   'auth/getProfileInfo',
   async (_, { rejectWithValue }) => {
     try {
@@ -61,14 +61,23 @@ export const logOut = createAsyncThunk(
         },
       });
 
+      if (!response.ok) {
+        throw new Error(`Failed to fetch profile, status: ${response.status}`);
+      }
+
       const data = await response.json();
-      
-      if (response.ok) {
+
+      if (!data || !data.body) {
+        throw new Error('Invalid profile data');
+      }
+
+      return data.body;
+      /* if (response.ok) {
 
         console.log('Get profile response is OK:', response);
         console.log("data body",data.body);
         return data.body;
-      } 
+      }  */
     } catch (error) {
 
       console.log('Error:', error);
@@ -76,4 +85,3 @@ export const logOut = createAsyncThunk(
     }
   }
 );
- */

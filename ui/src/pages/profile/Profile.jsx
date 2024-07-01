@@ -6,18 +6,19 @@ import { getProfileInfo } from '../../redux/actions'
 function Profile() {
   
   /* const { firstName, lastName } = useSelector(state => state.auth.user); */
+  const user = useSelector((state) => state.auth.user);
   
-  /* const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => { 
   
     dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
-  }, [dispatch]); */
+  }, [dispatch]);
 
   return (
     <main className="main bg-dark main-profile">
       <div className="header">
-        <h1 className='profile-title'>Welcome back<br />{/* {firstName} {lastName} */} !</h1>
+        <h1 className='profile-title'>Welcome back<br />{user ? `${user.firstName} ${user.lastName}` : ''} !</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

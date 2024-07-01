@@ -32,13 +32,13 @@ const authSlice =  createSlice({
         state.error = null;
         state.user = null; //! A changer ??
       })
-      /* .addCase(getProfileInfo.fulfilled, (state, action) => {
+      .addCase(getProfileInfo.fulfilled, (state, action) => {
         state.user = action.payload;
         state.error = null;
       })
       .addCase(getProfileInfo.rejected, (state, action) => {
         state.error = action.payload;
-      }); */
+      });
   },
 });
 

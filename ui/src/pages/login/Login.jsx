@@ -15,12 +15,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  /* const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    dispatch(logIn(email, password));
-    navigate('/profile');
-  }; */
   const handleSubmit = async (e) => {
     e.preventDefault();
 

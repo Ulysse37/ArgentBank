@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../assets/argentBankLogo.png';
 import './navbar.css';
@@ -7,26 +6,17 @@ import { faCircleUser, faArrowRightFromBracket } from '@fortawesome/free-solid-s
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { logOut } from '../../redux/actions';
-import { getProfileInfo } from '../../redux/actions'
 
 function NavBar() {
   
-  /* const { firstName } = useSelector(state => state.auth.user); */
   const user = useSelector((state) => state.auth.user);
-
   const location = useLocation();
   const dispatch = useDispatch();
-
-  useEffect(() => { 
-    if (user) {
-      dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
-    }
-    }, [user, dispatch]);
 
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     dispatch(logOut());
   };
-  console.log(user);
+
   return (
     <nav className="main-nav">
       <ul>

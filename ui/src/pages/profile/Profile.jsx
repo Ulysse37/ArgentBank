@@ -5,9 +5,7 @@ import Account from '../../components/account/Account'
 import { getProfileInfo } from '../../redux/actions'
 function Profile() {
   
-  /* const { firstName, lastName } = useSelector(state => state.auth.user); */
   const user = useSelector((state) => state.auth.user);
-  
   const dispatch = useDispatch();
 
   useEffect(() => { 

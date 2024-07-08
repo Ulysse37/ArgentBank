@@ -4,8 +4,8 @@ import './profile.css';
 import Account from '../../components/account/Account'
 import { getProfileInfo } from '../../redux/actions'
 function Profile() {
-  const { firstName, lastName } = useSelector(state => state.login.user);
-  /* const [displayName, setDisplayName] = useState(`${firstName} ${lastName}`); */
+  
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
   useEffect(() => { 
@@ -16,7 +16,7 @@ function Profile() {
   return (
     <main className="main bg-dark main-profile">
       <div className="header">
-        <h1 className='profile-title'>Welcome back<br />{firstName} {lastName} !</h1>
+        <h1 className='profile-title'>Welcome back<br />{user ? `${user.firstName} ${user.lastName}` : ''} !</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

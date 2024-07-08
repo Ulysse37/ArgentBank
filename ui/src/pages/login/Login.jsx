@@ -1,29 +1,32 @@
 import './login.css';
 import React, { useState } from 'react';
-import { useDispatch/* , useSelector */ } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { logIn } from '../../redux/actions';
-/* import { Link } from 'react-router-dom'; */
 
-
-/* function Login() { */
 const Login = () => {
+
+  const loginError = useSelector(state => state.auth.error); // récupère message erreur action login
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  /* const { isLoading, error } = useSelector((state) => state.login); */
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    dispatch(logIn(email, password));
-    navigate('/profile');
-  };
 
+    try {
+      dispatch(logIn({ email, password }));
+
+      navigate('/profile');
+    } catch (error){
+      console.log('error');
+    }
+  };
   return (
     <main className="main bg-dark main-login">
       <section className="sign-in-content">
@@ -41,9 +44,9 @@ const Login = () => {
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
+            {loginError && <p className='error-message'>{loginError}</p>}
           </div>
-          {/* <Link to="/Profile" className="sign-in-button">Sign In</Link> */} {/* //! changer lien? */}
-          <button className="sign-in-button" type='submit'>Sign In</button>  {/* //! A changer en bouton? */}
+          <button className="sign-in-button" type='submit'>Sign In</button>
         </form>
       </section>
     </main>

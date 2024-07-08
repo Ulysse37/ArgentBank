@@ -64,7 +64,7 @@ export const getProfileInfo = createAsyncThunk(
       const data = await response.json();
       
       if (response.ok) {
-
+      
         return data.body;
       } 
     } catch (error) {

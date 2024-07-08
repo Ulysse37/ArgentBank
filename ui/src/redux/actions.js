@@ -61,23 +61,12 @@ export const getProfileInfo = createAsyncThunk(
         },
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch profile, status: ${response.status}`);
-      }
-
       const data = await response.json();
+      
+      if (response.ok) {
 
-      if (!data || !data.body) {
-        throw new Error('Invalid profile data');
-      }
-      /* console.log(data.body); */
-      return data.body;
-      /* if (response.ok) {
-
-        console.log('Get profile response is OK:', response);
-        console.log("data body",data.body);
         return data.body;
-      }  */
+      } 
     } catch (error) {
 
       console.log('Error:', error);

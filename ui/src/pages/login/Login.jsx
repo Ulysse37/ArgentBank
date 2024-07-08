@@ -13,6 +13,7 @@ const Login = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ const Login = () => {
 
       navigate('/profile');
     } catch (error){
+      setError("Email ou mot de passe invalide");
       console.log('error');
     }
   };
@@ -42,6 +44,7 @@ const Login = () => {
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
+            {error && <p>{error}</p>}
           </div>
           <button className="sign-in-button" type='submit'>Sign In</button>
         </form>

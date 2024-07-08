@@ -22,15 +22,13 @@ const authSlice =  createSlice({
         state.error = action.payload;
       })
       .addCase(logIn.rejected, (state, action) => {
-        /* state.token = action.payload; */
-        /* state.isAuthenticated = false; */
         state.error = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.token = null;
         state.isAuthenticated = false;
         state.error = null;
-        state.user = null; //! A changer ??
+        state.user = null;
       })
       .addCase(getProfileInfo.fulfilled, (state, action) => {
         state.user = action.payload;
@@ -43,4 +41,3 @@ const authSlice =  createSlice({
 });
 
 export default authSlice.reducer;
-

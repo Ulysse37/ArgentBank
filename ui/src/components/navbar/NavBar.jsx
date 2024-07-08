@@ -12,12 +12,12 @@ function NavBar() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
-
+  
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
     
     dispatch(logOut());
   };
-
+  
   return (
     <nav className="main-nav">
       <ul>

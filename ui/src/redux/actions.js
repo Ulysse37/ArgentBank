@@ -21,7 +21,7 @@ export const logIn = createAsyncThunk(
       const token = data.body.token;
 
       localStorage.setItem('token', token);
-      sessionStorage.setItem('token', token);
+      /* sessionStorage.setItem('token', token); */
       
       return data;
 
@@ -39,7 +39,7 @@ export const logOut = createAsyncThunk(
     try {
 
       localStorage.removeItem('token'); // suppression des tokens pour la déconnexion
-      sessionStorage.removeItem('token');
+      /* sessionStorage.removeItem('token'); */
 
       return null;
     } catch (error) {

@@ -1,6 +1,6 @@
 import './login.css';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
@@ -8,13 +8,14 @@ import { logIn } from '../../redux/actions';
 
 const Login = () => {
 
+  const loginError = useSelector(state => state.auth.error); // récupère message erreur action login
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,7 +24,6 @@ const Login = () => {
 
       navigate('/profile');
     } catch (error){
-      setError("Email ou mot de passe invalide");
       console.log('error');
     }
   };
@@ -44,7 +44,7 @@ const Login = () => {
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
-            {error && <p>{error}</p>}
+            {loginError && <p className='error-message'>{loginError}</p>}
           </div>
           <button className="sign-in-button" type='submit'>Sign In</button>
         </form>

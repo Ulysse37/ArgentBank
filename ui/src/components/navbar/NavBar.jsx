@@ -10,7 +10,7 @@ function NavBar() {
   
   const user = useSelector((state) => state.auth.user);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  
+
   const dispatch = useDispatch();
 
   const handleLogOut = () => { // enlève le token du localStorage puis passe le isAuthenticated à false
@@ -27,7 +27,7 @@ function NavBar() {
             <h1 className="sr-only">Argent Bank</h1>
           </a>
         </li>
-        {isAuthenticated ? (
+        {isAuthenticated ? ( // si utilisateur connecté lien vers sa page profile sur son prénom / affichage du sign out
           <>
             <NavLink to ="/profile">
             {user && (
@@ -44,7 +44,7 @@ function NavBar() {
               </li>
             </NavLink>
           </>
-        ) : (
+        ) : ( // si utilisateur pas connecté affichage lien vers page login
           <NavLink to="/Login" className="main-nav-item">
             <li>
               <FontAwesomeIcon className="signup-icon" icon={faArrowRightFromBracket} />

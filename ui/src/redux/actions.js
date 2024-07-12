@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction  } from '@reduxjs/toolkit';
 
 export const logIn = createAsyncThunk(
   'auth/logIn',
@@ -74,3 +74,5 @@ export const getProfileInfo = createAsyncThunk(
     }
   }
 );
+
+export const resetError = createAction('auth/resetError'); // action pour remettre le state de error à null

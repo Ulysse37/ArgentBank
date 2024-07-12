@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, getProfileInfo } from '../redux/actions';
+import { logIn, logOut, getProfileInfo, resetError } from '../redux/actions';
 
 const initialState = {
   token: null,
@@ -37,7 +37,11 @@ const authSlice =  createSlice({
       })
       .addCase(getProfileInfo.rejected, (state, action) => {
         state.error = action.payload;
-      });
+      })
+      .addCase(resetError, (state) => {
+        state.error = null; // quand action déclenchée -> met à jour le state de error à null
+      });;
+      
   },
 });
 

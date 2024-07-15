@@ -39,15 +39,15 @@ function Profile() {
         </header>
       ) : (
         <header className="header">
+          <h1 className='profile-title'>Welcome back</h1>
           <form>
-            <h1 className='profile-title'>Welcome back</h1>
-            <label></label>
+            <label aria-label='First Name'></label>
             <input
             type="text"
             className="edit-input"
             id="firstName"
             defaultValue={user.firstName}/>
-            <label></label>
+            <label aria-label='Last Name'></label>
             <input
             type="text"
             className="edit-input"

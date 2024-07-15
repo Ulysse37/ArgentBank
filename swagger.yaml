@@ -114,14 +114,14 @@ paths:
           description: Internal Server Error
 
   #! Transactions module
-  /user/transactions:
+  /transactions:
     get: 
       security:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Display monthly transaction
-      description: API to display monthly transaction, by account
+      summary: Display monthly transactions
+      description: API to display monthly transactions, by account
       produces:
       - application/json
       responses:
@@ -139,7 +139,7 @@ paths:
           description: Not Found
         "500":
           description: Internal Server Error
-  /user/transactions/{transactionId}: 
+  /transactions/{id}: 
     get: 
       security:
         - Bearer: []
@@ -148,7 +148,7 @@ paths:
       summary: Display transaction details
       description: API to display specific transaction
       parameters:
-      - name: transactionId
+      - name: id
         type : number
         in: path
         description : Id of the Transaction
@@ -173,10 +173,10 @@ paths:
           - Bearer: []
       tags:
         - Transactions Module
-      summary: Update Transaction
+      summary: Update Transaction infos
       description: API to Update a Transaction's category and note
       parameters:
-      - name: transactionId
+      - name: id
         type : string
         in: path
         description : Id of the Transaction
@@ -192,7 +192,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/TransactionDetails'
+            $ref: '#/definitions/TransactionRes'
         "400":
           description: Bad Request
         "401":
@@ -262,9 +262,31 @@ definitions:
   Account:
     type: object
     properties:
+      accountId:
+        type: string
+      accountNumber: 
+        type: number
+      accountBalance:
+        type: number
+      transactions: 
+        type: array
+        items:
+          $ref: "#/definitions/Transaction"
+    required: 
+      - date
+      - description
+      - amount
+      - balance
+      # Transaction definition
+  Transaction: 
+    type: object
+    properties:
+      id: 
+        type: string
+        description: Id of the transaction
       date:
         type: string
-        pattern: "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$"
+        format: date
         description: Date of the transaction
       description: 
         type: string
@@ -275,18 +297,16 @@ definitions:
       balance: 
         type: number
         description: Balance after the transaction
-    required: 
-      - date
-      - description
-      - amount
-      - balance
   # Transaction definition
   TransactionDetails: 
     type: object
     properties:
+      id: 
+        type: string
+        description: Id of the transaction
       date:
         type: string
-        pattern: "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$"
+        format: date
         description: Date of the transaction
       description: 
         type: string
@@ -316,3 +336,11 @@ definitions:
       note: 
         type: string
         description: Updated note of the transaction
+  TransactionRes: 
+     properties:
+      status:
+        type: number
+        description: status code
+      message:
+        type: string
+        description: confirm message

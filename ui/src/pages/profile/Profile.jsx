@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './profile.css';
 import Account from '../../components/account/Account'
@@ -8,17 +8,50 @@ function Profile() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
+  const [editingName, setEditingName] = useState(false); 
+
   useEffect(() => { 
   
     dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
   }, [dispatch]);
 
+  const toggleEditName = () => {
+    setEditingName(true);
+  };
+
+  const cancelEditName = () => {
+    setEditingName(false);
+  };
+
   return (
     <main className="main bg-dark main-profile">
-      <div className="header">
-        <h1 className='profile-title'>Welcome back<br />{user ? `${user.firstName} ${user.lastName}` : ''} !</h1>
-        <button className="edit-button">Edit Name</button>
-      </div>
+      {!editingName ? (
+        <header className="header">
+          <h1 className='profile-title'>Welcome back<br />{user ? `${user.firstName} ${user.lastName}` : ''} !</h1>
+          <button className="edit-button" onClick={toggleEditName}>Edit Name</button>
+        </header>
+      ) : (
+        <header className="header">
+          <form>
+            <h1 className='profile-title'>Welcome back</h1>
+            <label></label>
+            <input
+            type="text"
+            id="firstName"
+            defaultValue={user.firstName}/>
+            <label></label>
+            <input
+            type="text"
+            id="firstName"
+            defaultValue={user.lastName}/>
+          </form>
+          <div>
+            <button type="submit">Save</button>
+            <button type="button" onClick={cancelEditName}>Cancel</button>
+          </div>
+        </header>
+      )}
+      
       <h2 className="sr-only">Accounts</h2>
       <Account accountNumber={"(x8349)"} balance={"$2,082.79"} />
       <Account accountNumber={"(x6712)"} balance={"$10,928.42"} />

@@ -8,18 +8,18 @@ function Profile() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
-  const [editingName, setEditingName] = useState(false); 
+  const [editingName, setEditingName] = useState(false); // state pour afficher soit le header classique soit header edit name
 
   useEffect(() => { 
   
     dispatch(getProfileInfo()); // affiche le nom de l'utilisateur
   }, [dispatch]);
 
-  const toggleEditName = () => {
+  const toggleEditName = () => { // au clic sur bouton edit name on bascule sur l'affichage du form
     setEditingName(true);
   };
 
-  const cancelEditName = () => {
+  const cancelEditName = () => { // au clic sur bouton cancel on bascule sur affichage du header classique
     setEditingName(false);
   };
 

@@ -37,17 +37,19 @@ function Profile() {
             <label></label>
             <input
             type="text"
+            className="edit-input"
             id="firstName"
             defaultValue={user.firstName}/>
             <label></label>
             <input
             type="text"
-            id="firstName"
+            className="edit-input"
+            id="lastName"
             defaultValue={user.lastName}/>
           </form>
           <div>
-            <button type="submit">Save</button>
-            <button type="button" onClick={cancelEditName}>Cancel</button>
+            <button type="submit" className="edit-button">Save</button>
+            <button type="button" onClick={cancelEditName} className="edit-button">Cancel</button>
           </div>
         </header>
       )}

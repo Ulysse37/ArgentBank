@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './profile.css';
 import Account from '../../components/account/Account'
-import { getProfileInfo } from '../../redux/actions'
+import { getProfileInfo, editName } from '../../redux/actions'
 function Profile() {
   
   const user = useSelector((state) => state.auth.user);
@@ -22,6 +22,13 @@ function Profile() {
   const cancelEditName = () => { // au clic sur bouton cancel on bascule sur affichage du header classique
     setEditingName(false);
   };
+
+  const saveEditName = async (e) => {
+    const newFirstName = document.getElementById('firstName').value;
+    const newLastName = document.getElementById('lastName').value;
+    dispatch(editName({ firstName: newFirstName, lastName: newLastName }));
+    setEditingName(false);
+  }
 
   return (
     <main className="main bg-dark main-profile">
@@ -48,7 +55,7 @@ function Profile() {
             defaultValue={user.lastName}/>
           </form>
           <div>
-            <button type="submit" className="edit-button">Save</button>
+            <button type="submit" className="edit-button" onClick={saveEditName}>Save</button>
             <button type="button" onClick={cancelEditName} className="edit-button">Cancel</button>
           </div>
         </header>

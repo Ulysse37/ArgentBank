@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, getProfileInfo, resetError } from '../redux/actions';
+import { logIn, logOut, getProfileInfo, editName ,resetError } from '../redux/actions';
 
 const initialState = {
   token: null,
@@ -36,6 +36,13 @@ const authSlice =  createSlice({
         state.error = null;
       })
       .addCase(getProfileInfo.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      .addCase(editName.fulfilled, (state, action) => {
+        state.user.firstName = action.payload.firstName;
+        state.user.lastName = action.payload.lastName;
+      })
+      .addCase(editName.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(resetError, (state) => {

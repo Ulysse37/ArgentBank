@@ -54,10 +54,16 @@ function Profile() {
             id="lastName"
             defaultValue={user.lastName}/>
           </form>
-          <div>
-            <button type="submit" className="edit-button" onClick={saveEditName}>Save</button>
-            <button type="button" onClick={cancelEditName} className="edit-button">Cancel</button>
-          </div>
+          <fieldset className="edit-fieldset">
+            <input type="submit" 
+            className="edit-button" 
+            onClick={saveEditName} 
+            value={"Save"}/>
+            <input type="button" 
+            className="edit-button" 
+            onClick={cancelEditName} 
+            value={"Cancel"}/>
+          </fieldset>
         </header>
       )}
       

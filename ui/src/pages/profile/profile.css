@@ -48,3 +48,7 @@
   margin: 20px 10px 10px 10px;
   color: rgb(168, 168, 168);
 }
+
+.edit-fieldset {
+  border: none;
+}

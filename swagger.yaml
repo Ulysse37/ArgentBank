@@ -336,6 +336,7 @@ definitions:
       note: 
         type: string
         description: Updated note of the transaction
+  # TransactionRes definition
   TransactionRes: 
      properties:
       status:

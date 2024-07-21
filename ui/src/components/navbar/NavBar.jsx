@@ -28,21 +28,22 @@ function NavBar() {
           </a>
         </li>
         {isAuthenticated ? ( // si utilisateur connecté lien vers sa page profile sur son prénom / affichage du sign out
-          <>
-            <NavLink to ="/profile">
-            {user && (
-              <li className='nav-firstname'>
-                <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
-                {user.firstName}
-              </li>
-            )}
-            </NavLink>
-            <NavLink to="/" onClick={handleLogOut} className="main-nav-item">
-              <li>
-                <FontAwesomeIcon className="signup-icon" icon={faArrowRightFromBracket} />
-                Sign Out
-              </li>
-            </NavLink>
+          <><div className="main-nav-item-flex">
+              <NavLink to ="/profile" className='main-nav-item'>{/* nav-firstname */}
+              {user && (
+                <li>
+                  <FontAwesomeIcon className="signup-icon" icon={faCircleUser}/>
+                  {user.firstName}
+                </li>
+              )}
+              </NavLink>
+              <NavLink to="/" onClick={handleLogOut} className="main-nav-item">
+                <li>
+                  <FontAwesomeIcon className="signup-icon" icon={faArrowRightFromBracket} />
+                  Sign Out
+                </li>
+              </NavLink>
+            </div>
           </>
         ) : ( // si utilisateur pas connecté affichage lien vers page login
           <NavLink to="/Login" className="main-nav-item">

@@ -31,7 +31,7 @@ function Profile() {
   }
 
   return (
-    <main className="main bg-dark main-profile">
+    <main className="bg-dark main-profile">
       {!editingName ? (
         <header className="header">
           <h1 className='profile-title'>Welcome back<br />{user ? `${user.firstName} ${user.lastName}` : ''} !</h1>

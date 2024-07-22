@@ -3,6 +3,7 @@
 }
 
 .main-profile {
+  height: calc(100vh - 188px);
   min-height: 640px;
 }
 
@@ -51,4 +52,11 @@
 
 .edit-fieldset {
   border: none;
+}
+
+@media (max-width: 720px) {
+  .main-profile {
+    height: calc(100vh - 50px);
+    min-height: 640px;
+  }
 }

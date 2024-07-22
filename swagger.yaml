@@ -8,7 +8,9 @@ host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
+
 paths:
+  #! User Module
   /user/login:
     post:
       tags:
@@ -74,7 +76,7 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -103,13 +105,105 @@ paths:
         - application/json
       responses:
         '200':
-          description: User profile retrieved successully
+          description: User profile retrieved successfully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
+
+  #! Transactions module
+  /transactions:
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Display monthly transactions
+      description: API to display monthly transactions, by account
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful retrieval of user transaction
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Account"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+  /transactions/{id}: 
+    get: 
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Display transaction details
+      description: API to display specific transaction
+      parameters:
+      - name: id
+        type : number
+        in: path
+        description : Id of the Transaction
+        required: true
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionDetails'
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+    put : 
+      security:
+          - Bearer: []
+      tags:
+        - Transactions Module
+      summary: Update Transaction infos
+      description: API to Update a Transaction's category and note
+      parameters:
+      - name: id
+        type : string
+        in: path
+        description : Id of the Transaction
+        required: true
+      - in: body
+        name: body
+        description: Fields to Update
+        schema:
+          $ref: '#/definitions/TransactionUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TransactionRes'
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+
+
+  #! Definitions section
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,3 +258,90 @@ definitions:
         type: string
       lastName:
         type: string
+  # Account definition
+  Account:
+    type: object
+    properties:
+      accountId:
+        type: string
+      accountNumber: 
+        type: number
+      accountBalance:
+        type: number
+      transactions: 
+        type: array
+        items:
+          $ref: "#/definitions/Transaction"
+    required: 
+      - date
+      - description
+      - amount
+      - balance
+      # Transaction definition
+  Transaction: 
+    type: object
+    properties:
+      id: 
+        type: string
+        description: Id of the transaction
+      date:
+        type: string
+        format: date
+        description: Date of the transaction
+      description: 
+        type: string
+        description: Description of the transaction
+      amount:
+        type: number
+        description: Amount of the transaction
+      balance: 
+        type: number
+        description: Balance after the transaction
+  # Transaction definition
+  TransactionDetails: 
+    type: object
+    properties:
+      id: 
+        type: string
+        description: Id of the transaction
+      date:
+        type: string
+        format: date
+        description: Date of the transaction
+      description: 
+        type: string
+        description: Description of the transaction
+      amount:
+        type: number
+        description: Amount of the transaction
+      balance: 
+        type: number
+        description: Balance after the transaction
+      type: 
+        type: string
+        description: Type of the transaction
+      category:
+        type: string
+        description: Category of the transaction
+      note: 
+        type: string
+        description: Note of the transaction
+  # TransactionUpdate definition
+  TransactionUpdate: 
+    type: object
+    properties:
+      category:
+        type: string
+        description: Updated category of the transaction
+      note: 
+        type: string
+        description: Updated note of the transaction
+  # TransactionRes definition
+  TransactionRes: 
+     properties:
+      status:
+        type: number
+        description: status code
+      message:
+        type: string
+        description: confirm message

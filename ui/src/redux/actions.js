@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction  } from '@reduxjs/toolkit';
 
 export const logIn = createAsyncThunk(
   'auth/logIn',
@@ -21,7 +21,6 @@ export const logIn = createAsyncThunk(
       const token = data.body.token;
 
       localStorage.setItem('token', token);
-      /* sessionStorage.setItem('token', token); */
       
       return data;
 
@@ -39,7 +38,6 @@ export const logOut = createAsyncThunk(
     try {
 
       localStorage.removeItem('token'); // suppression des tokens pour la déconnexion
-      /* sessionStorage.removeItem('token'); */
 
       return null;
     } catch (error) {
@@ -74,3 +72,32 @@ export const getProfileInfo = createAsyncThunk(
     }
   }
 );
+
+export const editName = createAsyncThunk(
+  'auth/editName',
+  async ({ firstName, lastName }, { rejectWithValue }) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ firstName, lastName }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        
+        return data.body;
+      }
+    } catch (error) {
+
+      console.log('Error:', error);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resetError = createAction('auth/resetError'); // action pour remettre le state de error à null

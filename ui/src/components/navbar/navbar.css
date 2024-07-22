@@ -39,9 +39,14 @@ nav ul {
   color: #42b983;
 }
 
+.main-nav-item-flex {
+  display: flex;
+  flex-direction: row;
+}
+
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
+  margin-left: 25px;
 }
 
 .main-nav-item:hover {
@@ -62,6 +67,13 @@ nav ul {
   margin-right: 5px;
 }
 
-.nav-firstname {
-  margin-left: 1300px;
+@media (max-width: 576px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-nav {
+    margin-bottom: 10px;
+  }
+  
 }

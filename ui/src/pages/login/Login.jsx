@@ -1,10 +1,10 @@
 import './login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
-import { logIn } from '../../redux/actions';
+import { logIn, resetError } from '../../redux/actions';
 
 const Login = () => {
 
@@ -27,6 +27,13 @@ const Login = () => {
       console.log('error');
     }
   };
+
+  useEffect(() => {
+    
+    dispatch(resetError()); /*  Appelle l'action resetError lors du chargement de la page afin de vider le message d'erreur
+    pour enlever le message d'erreur à l'actualisation de la page en cas de mauvais login. */
+  }, [dispatch]);
+
   return (
     <main className="main bg-dark main-login">
       <section className="sign-in-content">

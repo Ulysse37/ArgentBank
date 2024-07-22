@@ -10,8 +10,8 @@ const ProfileAuth = ({ children, isProtected }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (!isProtected && isAuthenticated) {
-    return <Navigate to="/profile" replace />;
+  if (!isProtected && isAuthenticated) { 
+    return <Navigate to="/profile" replace />; // si user est connecté la page login renvoie vers la page profile.
   }
 
   return children;

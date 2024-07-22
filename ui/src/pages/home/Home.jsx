@@ -1,9 +1,4 @@
 import './home.css';
-
-/* import ChatIcon from '../../assets/icon-chat.png';
-import MoneyIcon from '../../assets/icon-money.png';
-import SecurityIcon from '../../assets/icon-security.png'; */
-
 import Feature from '../../components/feature/Feature';
 import { featuresData } from '../../assets/featureData';
 
